@@ -1,6 +1,7 @@
 package structDiff
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -42,6 +43,36 @@ func TestDiff(t *testing.T) {
 			t.Fatalf("diff fail, the price should be diff")
 		}
 	})
+
+	t.Run("diff to map[string]interface{}", func(t *testing.T) {
+		b1 := &Book{
+			Name:  "book1",
+			Price: 123.12,
+		}
+		b2 := &Book{
+			Name:  "book2",
+			Price: 123.15,
+		}
+		e := reflect.ValueOf(b2).Elem()
+		typeOf := e.Type()
+		data := make(map[string]interface{})
+		for index := 0; index < e.NumField(); index++ {
+			name := typeOf.Field(index).Name
+			value := e.Field(index).Interface()
+			data[name] = value
+		}
+		update := Diff(b1, data)
+		if len(update) != 2 {
+			t.Fatalf("diff fail, diff field should be 2")
+		}
+		if update["Name"].(string) != b1.Name {
+			t.Fatalf("diff fail, the name should be diff")
+		}
+		if update["Price"].(float64) != b1.Price {
+			t.Fatalf("diff fail, the price should be diff")
+		}
+	})
+
 	t.Run("diff nesting struct(same)", func(t *testing.T) {
 		b1 := &Book{
 			Name:  "book1",
