@@ -2,7 +2,9 @@ package structDiff
 
 import (
 	"fmt"
+	"math/cmplx"
 	"testing"
+	"unsafe"
 
 	"github.com/fatih/structs"
 )
@@ -204,7 +206,6 @@ func TestPick(t *testing.T) {
 		if len(data) != len(fields) {
 			t.Fatalf("pick data fail")
 		}
-		fmt.Println(data["Name"])
 		if data["Name"] != b.Name {
 			t.Fatalf("pick data fail, the name is not equal")
 		}
@@ -224,6 +225,16 @@ func TestIs(t *testing.T) {
 		}
 	})
 
+	t.Run("is bool", func(t *testing.T) {
+		if !IsBool(true) {
+			t.Fatalf("is bool check fail")
+		}
+
+		if IsBool(0) {
+			t.Fatalf("is bool check fail")
+		}
+	})
+
 	t.Run("is int", func(t *testing.T) {
 		if !IsInt(1) {
 			t.Fatalf("is int check fail")
@@ -233,13 +244,135 @@ func TestIs(t *testing.T) {
 		}
 	})
 
-	t.Run("is bool", func(t *testing.T) {
-		if !IsBool(true) {
-			t.Fatalf("is bool check fail")
+	t.Run("is int8", func(t *testing.T) {
+		var v int8 = 10
+		if !IsInt8(v) {
+			t.Fatalf("is int8 check fail")
 		}
 
-		if IsBool(0) {
-			t.Fatalf("is bool check fail")
+		if IsInt8(10) {
+			t.Fatalf("is int8 check fail")
+		}
+	})
+
+	t.Run("is int16", func(t *testing.T) {
+		var v int16 = 10
+		if !IsInt16(v) {
+			t.Fatalf("is int16 check fail")
+		}
+
+		if IsInt16(10) {
+			t.Fatalf("is int16 check fail")
+		}
+	})
+
+	t.Run("is int32", func(t *testing.T) {
+		var v int32 = 10
+		if !IsInt32(v) {
+			t.Fatalf("is int32 check fail")
+		}
+
+		if !IsInt32('a') {
+			t.Fatalf("is int32 check fail")
+		}
+
+		if IsInt32(0) {
+			t.Fatalf("is int32 check fail")
+		}
+	})
+
+	t.Run("is int64", func(t *testing.T) {
+		var v int64 = 10
+		if !IsInt64(v) {
+			t.Fatalf("is int64 check fail")
+		}
+
+		if IsInt64(10) {
+			t.Fatalf("is int64 check fail")
+		}
+	})
+
+	t.Run("is uint8", func(t *testing.T) {
+		if !IsUint8([]byte("a")[0]) {
+			t.Fatalf("is uint8 check fail")
+		}
+
+		if IsUint8(0) {
+			t.Fatalf("is uint8 check fail")
+		}
+	})
+
+	t.Run("is uint16", func(t *testing.T) {
+		var v uint16 = 10
+		if !IsUint16(v) {
+			t.Fatalf("is uint16 check fail")
+		}
+		if IsUint16(10) {
+			t.Fatalf("is uint16 check fail")
+		}
+	})
+
+	t.Run("is uint32", func(t *testing.T) {
+		var v uint32 = 10
+		if !IsUint32(v) {
+			t.Fatalf("is uint32 check fail")
+		}
+
+		if IsUint32(10) {
+			t.Fatalf("is uint32 check fail")
+		}
+	})
+
+	t.Run("is uint64", func(t *testing.T) {
+		var v uint64 = 10
+		if !IsUint64(v) {
+			t.Fatalf("is uint64 check fail")
+		}
+
+		if IsUint64(10) {
+			t.Fatalf("is uint64 check fail")
+		}
+	})
+
+	t.Run("is uintptr", func(t *testing.T) {
+		i := 10
+		ptr := uintptr(unsafe.Pointer(&i))
+		fmt.Println(ptr)
+		fmt.Println(&i)
+		if !IsUintptr(ptr) {
+			t.Fatalf("is uintptr check fail")
+		}
+
+		if IsUintptr(&i) {
+			t.Fatalf("is uintptr check fail")
+		}
+	})
+
+	t.Run("is float32", func(t *testing.T) {
+		var v float32 = 10.1
+		if !IsFloat32(v) {
+			t.Fatalf("is float32 check fail")
+		}
+
+		if IsFloat32(10.1) {
+			t.Fatalf("is float32 check fail")
+		}
+	})
+
+	t.Run("is float64", func(t *testing.T) {
+		if !IsFloat64(10.1) {
+			t.Fatalf("is float64 check fail")
+		}
+
+		if IsFloat64(10) {
+			t.Fatalf("is float64 check fail")
+		}
+	})
+
+	t.Run("is complex128", func(t *testing.T) {
+		v := cmplx.Sqrt(-5 + 12i)
+		if !IsComplex128(v) {
+			t.Fatalf("is complex128 check fail")
 		}
 	})
 }
@@ -263,6 +396,62 @@ func TestGetParam(t *testing.T) {
 		i, found := GetInt(1, true, "name")
 		if !found || i != 1 {
 			t.Fatalf("get int fail")
+		}
+	})
+
+	t.Run("get int8 param", func(t *testing.T) {
+		i, found := GetInt8(int8(1), true, "name")
+		if !found || i != 1 {
+			t.Fatalf("get int8 fail")
+		}
+	})
+
+	t.Run("get int16 param", func(t *testing.T) {
+		i, found := GetInt16(int16(1), true, "name")
+		if !found || i != 1 {
+			t.Fatalf("get int16 fail")
+		}
+	})
+
+	t.Run("get int32 param", func(t *testing.T) {
+		i, found := GetInt32(int32(1), true, "name")
+		if !found || i != 1 {
+			t.Fatalf("get int32 fail")
+		}
+	})
+
+	t.Run("get int64 param", func(t *testing.T) {
+		i, found := GetInt64(int64(1), true, "name")
+		if !found || i != 1 {
+			t.Fatalf("get int64 fail")
+		}
+	})
+
+	t.Run("get uint8 param", func(t *testing.T) {
+		i, found := GetUint8(uint8(1), true, "name")
+		if !found || i != 1 {
+			t.Fatalf("get uint8 fail")
+		}
+	})
+
+	t.Run("get uint16 param", func(t *testing.T) {
+		i, found := GetUint16(uint16(1), true, "name")
+		if !found || i != 1 {
+			t.Fatalf("get uint16 fail")
+		}
+	})
+
+	t.Run("get uint32 param", func(t *testing.T) {
+		i, found := GetUint32(uint32(1), true, "name")
+		if !found || i != 1 {
+			t.Fatalf("get uint32 fail")
+		}
+	})
+
+	t.Run("get uint64 param", func(t *testing.T) {
+		i, found := GetUint64(uint64(1), true, "name")
+		if !found || i != 1 {
+			t.Fatalf("get uint64 fail")
 		}
 	})
 }
