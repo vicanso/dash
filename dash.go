@@ -108,6 +108,86 @@ func IncludesInt(collection []int, value int) (found bool) {
 	return
 }
 
+// IncludesUint8 check the value(uint8) is in collection
+func IncludesUint8(collection []uint8, value uint8) (found bool) {
+	for _, v := range collection {
+		if !found && v == value {
+			found = true
+		}
+	}
+	return
+}
+
+// IncludesUint16 check the value(uint16) is in collection
+func IncludesUint16(collection []uint16, value uint16) (found bool) {
+	for _, v := range collection {
+		if !found && v == value {
+			found = true
+		}
+	}
+	return
+}
+
+// IncludesUint32 check the value(uint32) is in collection
+func IncludesUint32(collection []uint32, value uint32) (found bool) {
+	for _, v := range collection {
+		if !found && v == value {
+			found = true
+		}
+	}
+	return
+}
+
+// IncludesUint64 check the value(uint64) is in collection
+func IncludesUint64(collection []uint64, value uint64) (found bool) {
+	for _, v := range collection {
+		if !found && v == value {
+			found = true
+		}
+	}
+	return
+}
+
+// IncludesInt8 check the value(int8) is in collection
+func IncludesInt8(collection []int8, value int8) (found bool) {
+	for _, v := range collection {
+		if !found && v == value {
+			found = true
+		}
+	}
+	return
+}
+
+// IncludesInt16 check the value(int16) is in collection
+func IncludesInt16(collection []int16, value int16) (found bool) {
+	for _, v := range collection {
+		if !found && v == value {
+			found = true
+		}
+	}
+	return
+}
+
+// IncludesInt32 check the value(int32) is in collection
+func IncludesInt32(collection []int32, value int32) (found bool) {
+	for _, v := range collection {
+		if !found && v == value {
+			found = true
+		}
+	}
+	return
+}
+
+// IncludesInt64 check the value(int64) is in collection
+func IncludesInt64(collection []int64, value int64) (found bool) {
+	for _, v := range collection {
+		if !found && v == value {
+			found = true
+		}
+	}
+	return
+}
+
 // Pick get the data from struct
 func Pick(current interface{}, fields []string) (data map[string]interface{}) {
 	data = make(map[string]interface{})

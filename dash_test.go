@@ -178,6 +178,86 @@ func TestIncludes(t *testing.T) {
 		if found {
 			t.Fatalf("includes int check not found fail")
 		}
+
+		found = IncludesUint8([]uint8{0, 1, 2}, 1)
+		if !found {
+			t.Fatalf("includes uint8 check found fail")
+		}
+
+		found = IncludesUint8([]uint8{0, 1, 2}, 3)
+		if found {
+			t.Fatalf("includes uint8 check found fail")
+		}
+
+		found = IncludesUint16([]uint16{0, 1, 2}, 1)
+		if !found {
+			t.Fatalf("includes uint16 check found fail")
+		}
+
+		found = IncludesUint16([]uint16{0, 1, 2}, 3)
+		if found {
+			t.Fatalf("includes uint16 check found fail")
+		}
+
+		found = IncludesUint32([]uint32{0, 1, 2}, 1)
+		if !found {
+			t.Fatalf("includes uint32 check found fail")
+		}
+
+		found = IncludesUint32([]uint32{0, 1, 2}, 3)
+		if found {
+			t.Fatalf("includes uint32 check found fail")
+		}
+
+		found = IncludesUint64([]uint64{0, 1, 2}, 1)
+		if !found {
+			t.Fatalf("includes uint64 check found fail")
+		}
+
+		found = IncludesUint64([]uint64{0, 1, 2}, 3)
+		if found {
+			t.Fatalf("includes uint64 check found fail")
+		}
+
+		found = IncludesInt8([]int8{0, 1, 2}, 1)
+		if !found {
+			t.Fatalf("includes int8 check found fail")
+		}
+
+		found = IncludesInt8([]int8{0, 1, 2}, 3)
+		if found {
+			t.Fatalf("includes int8 check found fail")
+		}
+
+		found = IncludesInt16([]int16{0, 1, 2}, 1)
+		if !found {
+			t.Fatalf("includes int16 check found fail")
+		}
+
+		found = IncludesInt16([]int16{0, 1, 2}, 3)
+		if found {
+			t.Fatalf("includes int16 check found fail")
+		}
+
+		found = IncludesInt32([]int32{0, 1, 2}, 1)
+		if !found {
+			t.Fatalf("includes int32 check found fail")
+		}
+
+		found = IncludesInt32([]int32{0, 1, 2}, 3)
+		if found {
+			t.Fatalf("includes int32 check found fail")
+		}
+
+		found = IncludesInt64([]int64{0, 1, 2}, 1)
+		if !found {
+			t.Fatalf("includes int64 check found fail")
+		}
+
+		found = IncludesInt64([]int64{0, 1, 2}, 3)
+		if found {
+			t.Fatalf("includes int64 check found fail")
+		}
 	})
 
 	t.Run("IncludesString", func(t *testing.T) {
@@ -190,6 +270,7 @@ func TestIncludes(t *testing.T) {
 		if found {
 			t.Fatalf("includes string check not found fail")
 		}
+
 	})
 }
 
