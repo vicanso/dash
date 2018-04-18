@@ -1,7 +1,6 @@
 package structDiff
 
 import (
-	"fmt"
 	"math/cmplx"
 	"testing"
 	"unsafe"
@@ -337,8 +336,6 @@ func TestIs(t *testing.T) {
 	t.Run("is uintptr", func(t *testing.T) {
 		i := 10
 		ptr := uintptr(unsafe.Pointer(&i))
-		fmt.Println(ptr)
-		fmt.Println(&i)
 		if !IsUintptr(ptr) {
 			t.Fatalf("is uintptr check fail")
 		}
@@ -452,6 +449,46 @@ func TestGetParam(t *testing.T) {
 		i, found := GetUint64(uint64(1), true, "name")
 		if !found || i != 1 {
 			t.Fatalf("get uint64 fail")
+		}
+	})
+}
+
+func TestFill(t *testing.T) {
+	t.Run("fill with no such field", func(t *testing.T) {
+		b := &Book{}
+		m := make(map[string]interface{})
+		m["Name"] = "book"
+		m["ISBN"] = "123123123"
+		err := Fill(b, m)
+		if err == nil || err.Error() != "No such field: ISBN in dest" {
+			t.Fatalf("fill should be return no such field error")
+		}
+	})
+	t.Run("fill success", func(t *testing.T) {
+		b := &Book{}
+		m := make(map[string]interface{})
+		m["Name"] = "book"
+		m["Price"] = 100.12
+		err := Fill(b, m)
+		if err != nil {
+			t.Fatalf("fill fail, %v", err)
+		}
+		if b.Name != m["Name"] || b.Price != m["Price"] {
+			t.Fatalf("fill fail")
+		}
+	})
+
+	t.Run("fill by first letter upper", func(t *testing.T) {
+		b := &Book{}
+		m := make(map[string]interface{})
+		m["name"] = "book"
+		m["price"] = 100.12
+		err := Fill(b, m, true)
+		if err != nil {
+			t.Fatalf("fill fail, %v", err)
+		}
+		if b.Name != m["name"] || b.Price != m["price"] {
+			t.Fatalf("fill fail")
 		}
 	})
 }

@@ -1,7 +1,9 @@
 package structDiff
 
 import (
+	"errors"
 	"reflect"
+	"strings"
 
 	"github.com/fatih/structs"
 )
@@ -317,4 +319,30 @@ func GetUint64(args ...interface{}) (value uint64, found bool) {
 		}
 	}
 	return
+}
+
+// Fill fill the dest with source
+func Fill(dest interface{}, m map[string]interface{}, args ...interface{}) error {
+	firstLetterUpper, _ := GetBool(args...)
+	structValue := reflect.ValueOf(dest).Elem()
+	for k, v := range m {
+		name := k
+		if firstLetterUpper {
+			name = strings.ToUpper(k[0:1]) + k[1:]
+		}
+		structFieldValue := structValue.FieldByName(name)
+		if !structFieldValue.IsValid() {
+			return errors.New("No such field: " + k + " in dest")
+		}
+		if !structFieldValue.CanSet() {
+			return errors.New("Cannot set " + k + " field value")
+		}
+		structFieldType := structFieldValue.Type()
+		val := reflect.ValueOf(v)
+		if structFieldType != val.Type() {
+			return errors.New("Provided value type didn't match dist " + k + " type")
+		}
+		structFieldValue.Set(val)
+	}
+	return nil
 }
