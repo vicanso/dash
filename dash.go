@@ -426,3 +426,93 @@ func Fill(dest interface{}, m map[string]interface{}, args ...interface{}) error
 	}
 	return nil
 }
+
+// UniqInt The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UniqInt(collection []int) (uniq []int) {
+	for _, v := range collection {
+		if !IncludesInt(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
+
+// UinqInt8 The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqInt8(collection []int8) (uniq []int8) {
+	for _, v := range collection {
+		if !IncludesInt8(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
+
+// UinqInt16 The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqInt16(collection []int16) (uniq []int16) {
+	for _, v := range collection {
+		if !IncludesInt16(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
+
+// UinqInt32 The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqInt32(collection []int32) (uniq []int32) {
+	for _, v := range collection {
+		if !IncludesInt32(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
+
+// UinqInt64 The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqInt64(collection []int64) (uniq []int64) {
+	for _, v := range collection {
+		if !IncludesInt64(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
+
+// UinqUint8 The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqUint8(collection []uint8) (uniq []uint8) {
+	for _, v := range collection {
+		if !IncludesUint8(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
+
+// UinqUint16 The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqUint16(collection []uint16) (uniq []uint16) {
+	for _, v := range collection {
+		if !IncludesUint16(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
+
+// UinqUint32 The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqUint32(collection []uint32) (uniq []uint32) {
+	for _, v := range collection {
+		if !IncludesUint32(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
+
+// UinqUint64 The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqUint64(collection []uint64) (uniq []uint64) {
+	for _, v := range collection {
+		if !IncludesUint64(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}

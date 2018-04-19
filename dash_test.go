@@ -573,3 +573,68 @@ func TestFill(t *testing.T) {
 		}
 	})
 }
+
+func TestUniq(t *testing.T) {
+	t.Run("uniq int", func(t *testing.T) {
+		data := UniqInt([]int{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq int fail, result is:%v", data)
+		}
+	})
+
+	t.Run("uniq int8", func(t *testing.T) {
+		data := UinqInt8([]int8{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq int8 fail, result is:%v", data)
+		}
+	})
+
+	t.Run("uniq int16", func(t *testing.T) {
+		data := UinqInt16([]int16{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq int16 fail, result is:%v", data)
+		}
+	})
+
+	t.Run("uniq int32", func(t *testing.T) {
+		data := UinqInt32([]int32{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq int32 fail, result is:%v", data)
+		}
+	})
+
+	t.Run("uniq int64", func(t *testing.T) {
+		data := UinqInt64([]int64{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq int64 fail, result is:%v", data)
+		}
+	})
+
+	t.Run("uniq uint8", func(t *testing.T) {
+		data := UinqUint8([]uint8{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq uint8 fail, result is:%v", data)
+		}
+	})
+
+	t.Run("uniq uint16", func(t *testing.T) {
+		data := UinqUint16([]uint16{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq uint16 fail, result is:%v", data)
+		}
+	})
+
+	t.Run("uniq uint32", func(t *testing.T) {
+		data := UinqUint32([]uint32{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq uint32 fail, result is:%v", data)
+		}
+	})
+
+	t.Run("uniq uint64", func(t *testing.T) {
+		data := UinqUint64([]uint64{1, 4, 1, 3, 4, 5})
+		if len(data) != 4 {
+			t.Fatalf("uniq uint64 fail, result is:%v", data)
+		}
+	})
+}
