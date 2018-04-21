@@ -637,4 +637,18 @@ func TestUniq(t *testing.T) {
 			t.Fatalf("uniq uint64 fail, result is:%v", data)
 		}
 	})
+
+	t.Run("uniq string", func(t *testing.T) {
+		data := UinqString([]string{
+			"a",
+			"b",
+			"c",
+			"d",
+			"a",
+			"c",
+		})
+		if len(data) != 4 {
+			t.Fatalf("uniq string fail")
+		}
+	})
 }

@@ -516,3 +516,13 @@ func UinqUint64(collection []uint64) (uniq []uint64) {
 	}
 	return
 }
+
+// UinqString The first occurrence of each element is kept. The order of result values is determined by the order they occur in the array.
+func UinqString(collection []string) (uniq []string) {
+	for _, v := range collection {
+		if !IncludesString(uniq, v) {
+			uniq = append(uniq, v)
+		}
+	}
+	return
+}
