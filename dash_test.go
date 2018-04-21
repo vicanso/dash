@@ -1,4 +1,4 @@
-package structDiff
+package dash
 
 import (
 	"math/cmplx"
