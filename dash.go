@@ -88,104 +88,194 @@ func Difference(current, original interface{}) (diff map[string]interface{}) {
 	return
 }
 
-// IncludesString check the value(string) is in collection
-func IncludesString(collection []string, value string) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+// FindStringIndex get the index of string
+func FindStringIndex(collection []string, value string) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
+}
+
+// IncludesString check the value(string) is in collection
+func IncludesString(collection []string, value string) bool {
+	return FindStringIndex(collection, value) != -1
+}
+
+// FindIntIndex get the index of int
+func FindIntIndex(collection []int, value int) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
+		}
+	}
+	return index
 }
 
 // IncludesInt check the value(int) is in collection
-func IncludesInt(collection []int, value int) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+func IncludesInt(collection []int, value int) bool {
+	return FindIntIndex(collection, value) != -1
+}
+
+// FindUint8Index get the index of uint8
+func FindUint8Index(collection []uint8, value uint8) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
 }
 
 // IncludesUint8 check the value(uint8) is in collection
 func IncludesUint8(collection []uint8, value uint8) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+	return FindUint8Index(collection, value) != -1
+}
+
+// FindUint16Index get the index of uint16
+func FindUint16Index(collection []uint16, value uint16) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
 }
 
 // IncludesUint16 check the value(uint16) is in collection
-func IncludesUint16(collection []uint16, value uint16) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+func IncludesUint16(collection []uint16, value uint16) bool {
+	return FindUint16Index(collection, value) != -1
+}
+
+// FindUint32Index get the index of uint32
+func FindUint32Index(collection []uint32, value uint32) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
 }
 
 // IncludesUint32 check the value(uint32) is in collection
-func IncludesUint32(collection []uint32, value uint32) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+func IncludesUint32(collection []uint32, value uint32) bool {
+	return FindUint32Index(collection, value) != -1
+}
+
+// FindUint64Index get the index of uint64
+func FindUint64Index(collection []uint64, value uint64) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
 }
 
 // IncludesUint64 check the value(uint64) is in collection
-func IncludesUint64(collection []uint64, value uint64) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+func IncludesUint64(collection []uint64, value uint64) bool {
+	return FindUint64Index(collection, value) != -1
+}
+
+// FindInt8Index get the index of int8
+func FindInt8Index(collection []int8, value int8) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
 }
 
 // IncludesInt8 check the value(int8) is in collection
-func IncludesInt8(collection []int8, value int8) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+func IncludesInt8(collection []int8, value int8) bool {
+	return FindInt8Index(collection, value) != -1
+}
+
+// FindInt16Index get the index of int16
+func FindInt16Index(collection []int16, value int16) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
 }
 
 // IncludesInt16 check the value(int16) is in collection
-func IncludesInt16(collection []int16, value int16) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+func IncludesInt16(collection []int16, value int16) bool {
+	return FindInt16Index(collection, value) != -1
+}
+
+// FindInt32Index get the index of int32
+func FindInt32Index(collection []int32, value int32) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
 }
 
 // IncludesInt32 check the value(int32) is in collection
-func IncludesInt32(collection []int32, value int32) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
+func IncludesInt32(collection []int32, value int32) bool {
+	return FindInt32Index(collection, value) != -1
+}
+
+// FindInt64Index get the index of int64
+func FindInt64Index(collection []int64, value int64) int {
+	index := -1
+	for i, v := range collection {
+		if index != -1 {
+			return index
+		}
+		if v == value {
+			index = i
 		}
 	}
-	return
+	return index
 }
 
 // IncludesInt64 check the value(int64) is in collection
-func IncludesInt64(collection []int64, value int64) (found bool) {
-	for _, v := range collection {
-		if !found && v == value {
-			found = true
-		}
-	}
-	return
+func IncludesInt64(collection []int64, value int64) bool {
+	return FindInt64Index(collection, value) != -1
 }
 
 // Pick get the data from struct
@@ -233,6 +323,11 @@ func IsInt64(i interface{}) bool {
 // IsBool check the value type is bool
 func IsBool(i interface{}) bool {
 	return getType(i) == "bool"
+}
+
+// IsUint check the value type is uint
+func IsUint(i interface{}) bool {
+	return getType(i) == "uint"
 }
 
 // IsUint8 check the value type is uint8

@@ -372,6 +372,17 @@ func TestIs(t *testing.T) {
 		}
 	})
 
+	t.Run("is uint", func(t *testing.T) {
+		var v uint = 10
+		if !IsUint(v) {
+			t.Fatalf("is uint check fail")
+		}
+
+		if IsUint(10) {
+			t.Fatalf("is uint check fail")
+		}
+	})
+
 	t.Run("is uint8", func(t *testing.T) {
 		if !IsUint8([]byte("a")[0]) {
 			t.Fatalf("is uint8 check fail")
