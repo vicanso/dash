@@ -10,7 +10,7 @@ install:
 
 script:
   - dep ensure
-  - go test -race -cover ./
+  - go test -race -cover ./...
 
 after_script:
   - golint ./

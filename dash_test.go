@@ -2,6 +2,7 @@ package dash
 
 import (
 	"math/cmplx"
+	"strings"
 	"testing"
 	"unsafe"
 
@@ -27,6 +28,21 @@ func (b *Book) GetName() string {
 }
 
 func TestDiff(t *testing.T) {
+	t.Run("struct to map", func(t *testing.T) {
+		b1 := &Book{
+			Name:   "book1",
+			Price:  123.12,
+			Author: "abc",
+		}
+		m := ToMap(b1)
+		keys := []string{}
+		for k := range m {
+			keys = append(keys, k)
+		}
+		if strings.Join(keys, ",") != "Name,Price,Author" {
+			t.Fatalf("struct to map fail")
+		}
+	})
 	t.Run("diff normal struct", func(t *testing.T) {
 		b1 := &Book{
 			Name:  "book1",

@@ -64,8 +64,8 @@ func getType(i interface{}) (valueType string) {
 	return
 }
 
-// convert struct to map
-func structToMap(s interface{}) (data map[string]interface{}) {
+// ToMap convert struct to map
+func ToMap(s interface{}) (data map[string]interface{}) {
 	switch s.(type) {
 	case map[string]interface{}:
 		return s.(map[string]interface{})
@@ -76,8 +76,8 @@ func structToMap(s interface{}) (data map[string]interface{}) {
 // Difference get the diff between current and original，
 // they should be the same struct type
 func Difference(current, original interface{}) (diff map[string]interface{}) {
-	map1 := structToMap(current)
-	map2 := structToMap(original)
+	map1 := ToMap(current)
+	map2 := ToMap(original)
 	diff = make(map[string]interface{})
 	for name, v1 := range map1 {
 		v2 := map2[name]
@@ -281,7 +281,7 @@ func IncludesInt64(collection []int64, value int64) bool {
 // Pick get the data from struct
 func Pick(current interface{}, fields []string) (data map[string]interface{}) {
 	data = make(map[string]interface{})
-	m := structToMap(current)
+	m := ToMap(current)
 	for k, v := range m {
 		if IncludesString(fields, k) {
 			data[k] = v
